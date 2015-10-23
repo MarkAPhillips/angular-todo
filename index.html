@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="App">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AngularJS To-do list</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="container" ng-controller="TodoListController as todo">
+    <div class="row">
+      <div class="col-md-8">
+        <h1>AngularJS To-do List</h1>
+        <hr/>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-5">
+        <form class="form-inline">
+          <div class="form-group">
+            <label for="todoItem">Item:</label>
+            <input type="text" class="form-control" ng-model="todo.item" id="todoItem" required>
+          </div>
+          <button class="btn btn-primary" ng-click="todo.add()">Add</button>
+        </form>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8">
+        <hr/>
+        <h2>To-do list items
+        </h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8">
+        <table class="table table-striped" ng-cloak>
+          <tr ng-repeat="item in todo.todos">
+            <td>
+              {{item.title}}
+            </td>
+            <td>
+              <a href="#" ng-click="todo.delete(item.id)"><i class="glyphicon glyphicon-trash"></i></a>
+            </td>
+        </table>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.1/angular.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.1/angular-resource.js"></script>
+  <script src="app.module.js"></script>
+  <script src="controllers/todolistcontroller.js"></script>
+</body>
+
+</html>
